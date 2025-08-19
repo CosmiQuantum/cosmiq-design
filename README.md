@@ -54,8 +54,21 @@ source /exp/cosmiq/app/Scripts/setup-grid.sh
 ```
 
 ## Palace grid shell script
-To submit a job, we need to call on a shell script which handles all aspects of talking to the grid, setting paths, running palace, and moving files around properly. This is handeled by palace_grid.sh found above. There are only three variables (for now) that you need to change yourself in this script. The first two are ```SIM_FILE``` and ```JSON_PATH```. ```SIM_FILE``` is the name of your palace script (e.g., "qubit-cavity-eig-test_fixedBC.json" as in the example in this repo). ```JSON_PATH``` is the directory where your palace simulation script (and preferably its mesh file as well) lives. The last variable you will likley want to change depending on your simulation is ```mpi_processes```, which simply sets the number of mpi processes you want to use to run palace. 
+To submit a job, we need to call on a shell script which handles all aspects of talking to the grid, setting paths, running palace, and moving files around properly. This is handeled by palace_grid.sh found above. There are only few variables (for now) that you need to change yourself in this script:
 
+1. ```SIM_DIR```
+   - Path to the subdirectory where your palace simulation script and corresponding mesh file are published is under ```/cvmfs/fermilab.opensciencegrid.org/cosmiq```
+
+2. ```SIM_FILE```
+   - Filename of your palace simulation script (.json)
+
+3. ```OUTPUTNAME```
+   - This is the name of the output file that will be produced after the simulation is done running.
+   - **This must be the exact same name as the output file defined in your palace simulation script.**
+     
+4. ```mpi_processes```
+   - Number of MPI processes to run palace (integer).
+     
 ## Submitting a job to the grid
 
 Now that you have your shell script properly setup, we can submit the desired simulation to be ran on the grid. To submit a job to the grid, we run:
@@ -68,9 +81,26 @@ jobsub_submit \
 --memory={how much ram to use}GB \
 --disk={disk storage needed}GB \
 --expected-lifetime={maximum duration}m \
-file:///exp/cosmiq/app/palace_gridtest.sh 
+file:///exp/cosmiq/app/palace_job_submission.sh 
 ```
-You have to leave units for ```--memory```, ```--disk```, ```--expected-lifetime``` or change the units above to some other appropiate units (like KB instead of GB for memory and disk). 
+
+You have to leave units for ```--memory```, ```--disk```, ```--expected-lifetime``` or change the units above to some other appropiate units (like KB instead of GB for memory and disk). After running a job submission command such as the one above, you will be given a job id with a format like ```########.#@jobsub0#.fnal.gov```. 
+
+To the status of your job, run: 
+
+```jobsub_q -G cosmiq --jobid=########.#@jobsub0#.fnal.gov```
+
+which will return a table like: 
+
+```
+JOBSUBJOBID                            OWNER             SUBMITTED            RUNTIME            ST       PRIO   SIZE       COMMAND
+########.#@jobsub0#.fnal.gov          cosmiq       <time_date_submitted>  <time_in_seconds>   <status>     <>     <>    palace_job_submission.sh 
+1 total; 0 completed, 0 removed, 1 idle, 0 running, 0 held, 0 suspended
+```
+
+Once a job is done running (the status table will show 0 for running, idle, or held), we can retrieve the job submission logs with:
+
+```jobsub_fetchlog -G cosmiq --jobid=########.#@jobsub0#.fnal.gov --destdir=job-log```
 
 ## HPC Rules of Thumb and Resource Calculations
 
