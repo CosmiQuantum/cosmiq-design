@@ -3,10 +3,10 @@
 ## Table of contents: 
 - [Overview of AWS Palace on the grid](#overview-of-aws-palace-on-the-grid)
 - [Running AWS Palace on the grid](#running-aws-palace-on-the-grid)
-    - [Setup](##setup)
-    - [Palace Grid Shell Script](##palace-grid-shell-script)
-    - [Submitting a job to the grid](##submitting-a-job-to-the-grid)
-    - [HPC Rules of Thumb and Resource Calculations](##hpc-rules-of-thumb-and-resource-calculations)
+    - [Setup](#setup)
+    - [Palace Grid Shell Script](#palace-grid-shell-script)
+    - [Submitting a job to the grid](#submitting-a-job-to-the-grid)
+    - [HPC Rules of Thumb and Resource Calculations](#hpc-rules-of-thumb-and-resource-calculations)
 
 - [Appendix A: Installation Process](#appendix-a-installation-process)
   
