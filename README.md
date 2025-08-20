@@ -9,6 +9,9 @@
     - [HPC Rules of Thumb and Resource Calculations](#hpc-rules-of-thumb-and-resource-calculations)
 
 - [Appendix A: Installation Process](#appendix-a-installation-process)
+- [Appendix B: Benchmarking](#appendix-b-benchmarking)
+    - [Quality Checks](#quality-checks)
+    - [Computation Performance Tests](#computation-performance-tests)
   
 # Overview of AWS Palace on the grid
 
@@ -105,3 +108,11 @@ Once a job is done running (the status table will show 0 for running, idle, or h
 ## HPC Rules of Thumb and Resource Calculations
 
 # Appendix A: Installation Process 
+# Appendix B: Benchmarking
+## Quality Checks
+Since we had to build our own OpenBLAS as well as sacrifice certain backend solvers when building palace, it's a good idea to make sure palace is behaving as it should on the Fermilab grid in terms of simulation results. The first test is a simple one: running [Eigenmodes of a Cylinder](https://awslabs.github.io/palace/dev/examples/cylinder/) from the AWS Palace github to ensure our palace gets the same results. The palace script and accompanying mesh file can be found [here](palace-cylinder-example). The results are illustrated in the plot below - as you can see our palace installation on the grid agrees very well with the expected results from the AWS palace github.
+
+
+We add new additions to this sections with actual circuit quantum electrodynamics architectures soon.
+
+## Computation Performance Tests 
