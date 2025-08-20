@@ -27,13 +27,13 @@ We publish software, codes, retrieve data, and submit grid jobs using the comput
 └── palace-simulations/
 ```
 
-No need to dive into the contents of these directories (although you're welcome to check yourself on cosmiqgpvm02) as the needed environment variables to use palace are all written into a shell script which we will discuss later on. Palace scripts and accompanying mesh files must also be published to cvfms to be used by the grid. To publish new palace scripts and mesh files, move the files to /grid/fermiapp/cvmfsfermilab/publish/cosmiq/ and then to publish them to /cvmfs/Fermilab.opensciencegrid.org/cosmiq/ run the following command:
+No need to dive into the contents of these directories (although you're welcome to check yourself on cosmiqgpvm02) as the needed environment variables to use palace are all written into a shell script which we will discuss later on. Palace scripts and accompanying mesh files must also be published to cvfms to be used by the grid. To publish new palace scripts and mesh files, move the files to ```/grid/fermiapp/cvmfsfermilab/publish/cosmiq/``` and then to publish them to ```/cvmfs/Fermilab.opensciencegrid.org/cosmiq/``` run the following command:
 
 ```/grid/fermiapp/cvmfsfermilab/bin/sync-cvmfs cosmiq```
 
-An important note is that the palace script (.json) file must have an absolute path to the the mesh file so you need to preemptively write the mesh file's absolute path under cvfms into the palace script before publishing (cvfms is read-only). See qubit-cavity-eig-test_fixedBC.json under the palace_testing diretory as an example. 
+An important note is that the palace script (.json) file must have an absolute path to the the mesh file so you need to preemptively write the mesh file's absolute path under cvfms into the palace script before publishing (cvfms is read-only). See [cavity_pec.json](palace-cylinder-example/cavity_pec.json) under the palace-cylinder-example diretory. 
 
-We do not want to permanently store scripts and meshes on cvmfs, so when they are no longer needed please delete them from /grid/fermiapp/cvmfsfermilab/publish/cosmiq/ and then re-run the publish command. For internal CosmiQ bookkeeping, we can permanently store all palace scripts, mesh files, and READMEs (describing what the files are for) in a to-be-determined location. 
+We do not want to permanently store scripts and meshes on cvmfs, so when they are no longer needed please delete them from ```/grid/fermiapp/cvmfsfermilab/publish/cosmiq/``` and then re-run the publish command. For internal CosmiQ bookkeeping, we can permanently store all palace scripts, mesh files, and READMEs (describing what the files are for) in a to-be-determined location. 
 
 # Running AWS Palace on the grid
 ## Setup
@@ -54,7 +54,7 @@ source /exp/cosmiq/app/Scripts/setup-grid.sh
 ```
 
 ## Palace grid shell script
-To submit a job, we need to call on a shell script which handles all aspects of talking to the grid, setting paths, running palace, and moving files around properly. This is handeled by palace_grid.sh found above. There are only few variables (for now) that you need to change yourself in this script:
+To submit a job, we need to call on a shell script which handles all aspects of talking to the grid, setting paths, running palace, and moving files around properly. This is handeled by [palace_job_submission.sh](palace_job_submission.sh). This shell script is also already on CEPH under ```/exp/cosmiq/app/palace```. There are only few variables (for now) that you will need to change yourself in this script:
 
 1. ```SIM_DIR```
    - Path to the subdirectory where your palace simulation script and corresponding mesh file are published is under ```/cvmfs/fermilab.opensciencegrid.org/cosmiq```
