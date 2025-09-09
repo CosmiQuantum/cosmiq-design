@@ -6,12 +6,11 @@
     - [Setup](#setup)
     - [Palace Grid Shell Script](#palace-grid-shell-script)
     - [Submitting a job to the grid](#submitting-a-job-to-the-grid)
-    - [HPC Rules of Thumb and Resource Calculations](#hpc-rules-of-thumb-and-resource-calculations)
+    - [Using HTC for FEM simulations](#using-htc-for-fem-simulations)
 
 - [Appendix A: Installation Process](#appendix-a-installation-process)
 - [Appendix B: Benchmarking](#appendix-b-benchmarking)
     - [Quality Checks](#quality-checks)
-    - [Computation Performance Tests](#computation-performance-tests)
   
 # Overview of AWS Palace on the grid
 
@@ -105,7 +104,7 @@ Once a job is done running (the status table will show 0 for running, idle, or h
 
 ```jobsub_fetchlog -G cosmiq --jobid=########.#@jobsub0#.fnal.gov --destdir=job-log```
 
-## HPC Rules of Thumb and Resource Calculations
+## Using HTC for FEM simulations
 
 # Appendix A: Installation Process 
 # Appendix B: Benchmarking
@@ -115,5 +114,3 @@ Since we had to build our own OpenBLAS as well as sacrifice certain backend solv
 ![Logo](Figures/eigenmode-cylinder-comparsion.png)
 
 We add new additions to this sections with actual circuit quantum electrodynamics architectures soon.
-
-## Computation Performance Tests 
