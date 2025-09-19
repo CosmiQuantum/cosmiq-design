@@ -1,8 +1,7 @@
 # AWS Palace on the Quest HPC at Northwestern University
 
 ## Table of contents: 
-- [Running AWS Palace on Quest](#running-aws-palace-on-quest)
-    - ["Overview"](#overview)
+- [Overview of AWS Palace on Quest](#overview-of-aws-palace-on-quest)
     - [Setup](#setup)
     - [Submitting Jobs and Other Useful Tools](#submitting-jobs-and-other-useful-tools)
     - [Palace Slurm Job Submission Script](#palace-slurm-job-submission-script)
