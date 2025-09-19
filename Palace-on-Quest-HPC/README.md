@@ -57,7 +57,8 @@ To tunnel into Quest run:
 Then head over to the project directory and run ```palace-setup.sh``` which automatically loads all the modules we need into our environment to run AWS Palace.
 
 ```$ cd /projects/p32999```
-```$ soruce palace-setup.sh```
+
+```$ source palace-setup.sh```
 
 We're now ready to get our EM simulation on (:
 
