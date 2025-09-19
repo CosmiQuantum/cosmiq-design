@@ -55,9 +55,10 @@ To tunnel into Quest run:
 
 Then head over to the project directory and run ```palace-setup.sh``` which automatically loads all the modules we need into our environment to run AWS Palace.
 
-```$ cd /projects/p32999```
-
-```$ source palace-setup.sh```
+```
+$ cd /projects/p32999
+$ source palace-setup.sh
+```
 
 We're now ready to get our EM simulation on (:
 
@@ -75,9 +76,16 @@ After submitting a job, you will get a job id. To check the status of your job r
 
 ```$ squeue -j <jobid>``` or (which I prefer) for a more detailed look at your job run ```$ checkjob <jobid>```.
 
+It's a good idea to save the output of the checkjob command for our internal knowledge. To do so, run:
+
+```checkjob <jobid> > <jobid>.txt```
+
+After a job is done (whether it completed or failed), you will see a slurm text file appear, slurm-<jobid>.out, that will contain the command line output from your simulation. If your AWS Palace job failed to run, it will be good to look at that file to look at the errors. 
+
 ## Palace Slurm Job Submission Script
 ## HPC Tips and Tricks
 
+It is very important to utilize HPC resources responsibly and resonably, both from a "fairshare" user standpoint as well as the fact that we are technically limited in computer hours. In this section, I will go over some tips, tricks, and rules of thumb for HPC computing. (to be continued).
 
 # Appendix A: Installation Process 
 
