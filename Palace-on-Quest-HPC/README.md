@@ -1,5 +1,7 @@
 # AWS Palace on the Quest HPC at Northwestern University
 
+To get access to this allocation and run AWS Palace on Quest you need to fill out [this](https://app.smartsheet.com/b/form/797775d810274db5889b5199c4260328). You need a Northwestern NetID in order to go this route. I believe there is a way to get around this for non-NU folk but I need to look into that still.
+
 ## Table of contents: 
 - [Overview of AWS Palace on Quest](#overview-of-aws-palace-on-quest)
     - [Setup](#setup)
@@ -42,8 +44,6 @@ There are a couple points I'd like to make:
     └── readme.txt
 ```
 3) Notice there are two AWS Palace installations under ```/projects/p32999/```, there is ```palace``` and ```palace_gpu```. As the names imply, the first one is without GPU resources enabled while the latter does have GPU resources (cuda) enabled. I have yet to test ```palace_gpu``` but generally since GPU usage eats a lot of compute, ```palace_gpu``` should be saved for only very complex geometries. I have yet to create (or test) a jobscript for use with ```palace_gpu``` but will do so soon.
-
-To get access to this allocation and run AWS Palace on Quest you need to fill out [this](https://app.smartsheet.com/b/form/797775d810274db5889b5199c4260328). You need a Northwestern NetID in order to go this route. I believe there is a way to get around this for non-NU folk but I need to look into that still.
 
 ## Setup
 
@@ -107,10 +107,9 @@ For the ```palace``` build, I ran the following CMake command:
 
 For the ```palace_gpu``` build, I ran the following command:
 
-```cmake ../palace_source -DCMAKE_INSTALL_PREFIX=../palace_install -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DPALACE_WITH_OPENMP=ON -DPALACE_WITH_CUDA=OFF -DBLA_VENDOR=OpenBLAS```
+```cmake ../palace_source -DCMAKE_INSTALL_PREFIX=../palace_install -DCMAKE_C_COMPILER=mpicc -DCMAKE_CXX_COMPILER=mpicxx -DPALACE_WITH_OPENMP=ON -DPALACE_WITH_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES="80;90" -DBLA_VENDOR=OpenBLAS ```
 
-
-Notice both installation have multithreading enabled. 
+Notice both installations have multithreading enabled. 
 
 # Appendix B: Benchmarking
 ## Quality Checks
