@@ -25,12 +25,15 @@ Currently, the project directory has the following setup:
 ├── palace/
 ├── palace_gpu/
 ├── palace_sims/
-├── palace-setup.sh 
-└── palace_jobscript.sh
+├── pyPalace/
+└── shell_scripts/
+    ├── palace_jobscript.sh
+    ├── palace_jobscript_gpu.sh
+    └── palace-setup.sh
 ```
 
 There are a couple points I'd like to make: 
-1) ```palace_jobscript.sh``` is meant to act a template, so please do not directly use it (I should probably rename it soon to indicate that). Instead copy it and rename it to something like ```palace_jobscript_<your_name>.sh``` from there you can edit your copy to your specifications.
+1) ```palace_jobscript.sh``` and ```palace_jobscript_gpu.sh``` are meant to act as templates, so please do not directly use them. Instead copy it and rename it to something like ```palace_jobscript_<your_name>.sh``` from there you can edit your copy to your specifications.
 2) I request all simulations (which encompasses a Palace config file (json) and a corresponding mesh file) be stored under their own folders inside ```palace_sims/```. In each simulation folder, please make a ```readme.txt``` where you describe the details of the simulation. For instance, as of writing this I have ran two simulations so far, so the contents of ```palace_sims/``` are:
 ```
 /projects/p32999/
@@ -43,7 +46,7 @@ There are a couple points I'd like to make:
     ├── cylinder_tet.msh
     └── readme.txt
 ```
-3) Notice there are two AWS Palace installations under ```/projects/p32999/```, there is ```palace``` and ```palace_gpu```. As the names imply, the first one is without GPU resources enabled while the latter does have GPU resources (cuda) enabled. I have yet to test ```palace_gpu``` but generally since GPU usage eats a lot of compute, ```palace_gpu``` should be saved for only very complex geometries. I have yet to create (or test) a jobscript for use with ```palace_gpu``` but will do so soon.
+3) Notice there are two AWS Palace installations under ```/projects/p32999/```, there is ```palace``` and ```palace_gpu```. As the names imply, the first one is without GPU resources enabled while the latter does have GPU resources (cuda) enabled. I have yet to test ```palace_gpu``` but generally since GPU usage eats a lot of compute, ```palace_gpu``` should be saved for only very complex geometries.
 
 ## Setup
 
@@ -83,6 +86,9 @@ It's a good idea to save the output of the checkjob command for our internal kno
 After a job is done (whether it completed or failed), you will see a slurm text file appear, slurm-<jobid>.out, that will contain the command line output from your simulation. If your AWS Palace job failed to run, it will be good to look at that file to look at the errors. 
 
 ## Palace Slurm Job Submission Script
+
+As noted above, I have created two job submission template scripts you can copy and use, one for use with the GPU boosted Palace install and one for the CPU only Palace install. 
+
 ## HPC Tips and Tricks
 
 It is very important to utilize HPC resources responsibly and resonably, both from a "fairshare" user standpoint as well as the fact that we are technically limited in computer hours. In this section, I will go over some tips, tricks, and rules of thumb for HPC computing. (to be continued).
