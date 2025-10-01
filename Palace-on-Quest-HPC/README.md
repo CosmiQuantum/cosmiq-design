@@ -60,7 +60,7 @@ Then head over to the project directory and run ```palace-setup.sh``` which auto
 
 ```
 $ cd /projects/p32999
-$ source palace-setup.sh
+$ source shell_scripts/palace-setup.sh
 ```
 
 We're now ready to get our EM simulation on (:
