@@ -1,0 +1,34 @@
+#!python
+
+import cubit
+
+def composite_curve_sections(start_id, end_id, num_sections):
+    curve_ids = list(range(start_id, end_id + 1))
+    n = len(curve_ids)
+    section_size = n // num_sections
+    remainder = n % num_sections
+
+    sections = []
+    start = 0
+    for i in range(num_sections):
+        extra = 1 if i < remainder else 0
+        end = start + section_size + extra
+        section = curve_ids[start:end]
+        sections.append(section)
+        start = end
+
+    for section in sections:
+        vol_ids = ' '.join(map(str, section))
+        cmd = f"composite create curve {vol_ids}"
+        print(f"Running: {cmd}")
+        cubit.cmd(cmd)
+
+start_id = 
+end_id = 
+num_sections = 
+
+composite_curve_sections(start_id=start_id, end_id=end_id, num_sections=num_sections)
+
+
+
+

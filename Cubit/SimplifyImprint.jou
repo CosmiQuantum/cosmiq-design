@@ -1,0 +1,8 @@
+set curve imprint cleanup tolerance 1e-5
+
+set surface imprint cleanup tolerance 1e-5
+
+imprint all
+
+merge all
+
