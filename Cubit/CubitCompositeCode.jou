@@ -2,8 +2,8 @@
 
 import cubit
 
-def composite_curve_sections(start_id, end_id, num_sections):
-    curve_ids = list(range(start_id, end_id + 1))
+def composite_curve_sections(surface_id, num_sections):
+    curve_ids = list(cubit.parse_cubit_list("curve", f"in surface {surface_id}"))
     n = len(curve_ids)
     section_size = n // num_sections
     remainder = n % num_sections
@@ -22,13 +22,10 @@ def composite_curve_sections(start_id, end_id, num_sections):
         cmd = f"composite create curve {vol_ids}"
         print(f"Running: {cmd}")
         cubit.cmd(cmd)
+        
+surface_id = 1 # surface id of surface whose curves you want to combine
+num_sections = 1 # number of total sections you to reduce the curves to
 
-start_id = 
-end_id = 
-num_sections = 
-
-composite_curve_sections(start_id=start_id, end_id=end_id, num_sections=num_sections)
-
-
+composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
 
 
