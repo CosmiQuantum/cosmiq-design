@@ -22,10 +22,11 @@ def composite_curve_sections(surface_id, num_sections):
         cmd = f"composite create curve {vol_ids}"
         print(f"Running: {cmd}")
         cubit.cmd(cmd)
-        
-surface_id = 1 # surface id of surface whose curves you want to combine
-num_sections = 1 # number of total sections you to reduce the curves to
 
-composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
+surface_ids = cubit.get_entities("surface")
+num_sections = 4 # number of total sections to reduce the curves to
+for surface_id in surface_ids: # I found putting this in a for loop and just reducing the # curves of all entities does not hurt anything and automates the process better.
+
+    composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
 
 
