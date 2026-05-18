@@ -25,7 +25,9 @@ def composite_curve_sections(surface_id, num_sections):
 
 surface_ids = cubit.get_entities("surface")
 num_sections = 4 # number of total sections to reduce the curves to
-for surface_id in surface_ids: # I found putting this in a for loop and just reducing the # curves of all entities does not hurt anything and automates the process better.
+
+# I found putting this in a for loop and just reducing the # curves of all entities does not hurt anything and automates the process better.
+for surface_id in surface_ids:
 
     composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
 
