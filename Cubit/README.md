@@ -49,6 +49,6 @@ A helper script to combine multiple curve segments into composite curves, divide
 
     # I found putting this in a for loop and just reducing the # curves of all entities does not hurt anything and automates the process better.
     for surface_id in surface_ids:
-    composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
+        composite_curve_sections(surface_id=surface_id, num_sections=num_sections)
 
 
